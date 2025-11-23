@@ -29,7 +29,7 @@
   </table>
   <script>
     // Version fetch
-    fetch('https://raw.githubusercontent.com/hagi122332445543/lateston1/main/version.txt')
+    fetch('https://github.com/mailforbrawlstars1919-code/Web/blob/main/version.txt?raw=true')
       .then(response => response.text())
       .then(version => {
         document.getElementById('version').innerHTML = 'Latest Version: <b>v' + version.trim() + '</b>';
@@ -39,7 +39,7 @@
       });
 
     // Keys fetch
-    fetch('https://raw.githubusercontent.com/hagi122332445543/lateston1/main/keys.json')
+    fetch('https://github.com/mailforbrawlstars1919-code/Web/blob/main/keys.json?raw=true')
       .then(response => response.json())
       .then(keys => {
         const table = document.getElementById('keyTable');
@@ -57,4 +57,34 @@
       });
   </script>
 </body>
+  <h2>Duyuru Gönder</h2>
+<form id="announcementForm" style="margin-bottom:30px;">
+  <input type="text" id="annTitle" placeholder="Başlık" required style="width:200px;">
+  <input type="text" id="annColor" placeholder="Renk (örn: #ffcc00)" value="#ffcc00" required style="width:120px;">
+  <textarea id="annMsg" placeholder="Mesaj" required style="width:300px;height:60px;"></textarea>
+  <label style="margin-left:10px;">
+    <input type="checkbox" id="annActive" checked> Aktif
+  </label>
+  <button type="submit">Duyuru Gönder</button>
+</form>
+<div id="annResult"></div>
+<script>
+document.getElementById('announcementForm').onsubmit = function(e) {
+  e.preventDefault();
+  const data = {
+    active: document.getElementById('annActive').checked,
+    title: document.getElementById('annTitle').value,
+    message: document.getElementById('annMsg').value,
+    color: document.getElementById('annColor').value
+  };
+  fetch('duyuru_gonder.php', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(data)
+  })
+  .then(r => r.text())
+  .then(msg => document.getElementById('annResult').innerText = msg)
+  .catch(() => document.getElementById('annResult').innerText = 'Bir hata oluştu!');
+};
+</script>
 </html>
