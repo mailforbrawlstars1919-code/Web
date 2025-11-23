@@ -1,0 +1,23 @@
+[
+  {
+    "key": "OWNERONLY",
+    "expires": "infinite",
+    "hwid": "68EF9875-8A2E-43AA-8B52-F40870FDA31A",
+    "desc": "Owner only",
+    "placeids": "all"
+  },
+  {
+    "key": "PREMIUM2025-12",
+    "expires": "29-11-2025",
+    "hwid": "4D20EF86-3E1D-4808-8CC4-3ACF33813CD8",
+    "desc": "Premium user",
+    "placeids": [16472538603]
+  },
+  {
+    "key": "FREEMIUM2025-1",
+    "expires": "29-11-2025",
+    "hwid": "all",
+    "desc": "Available for everyone",
+    "placeids": [16472538603, 10179538382]
+  }
+]

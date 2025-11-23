@@ -1,0 +1,11 @@
+{
+  "users": [
+    { "name": "User1", "reason": "Banned skiddy" },
+    { "name": "Cheater123", "reason": "Banned skiddy" },
+    { "name": "ExploiterXYZ", "reason": "Banned skiddy" }
+  ],
+  "hwids": [
+    { "hwid": "blacklisted_hwid_1", "reason": "HWID Banned Skiddy" },
+    { "hwid": "blacklisted_hwid_2", "reason": "HWID Banned Skiddy" }
+  ]
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ghost.xyz Script Version & Keys</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #181824; color: #fff; text-align: center; margin-top: 60px; }
+    .version { font-size: 2em; color: #7fffd4; }
+    table { margin: 30px auto; border-collapse: collapse; background: #23233a; }
+    th, td { padding: 10px 18px; border: 1px solid #333; }
+    th { background: #2e2e4d; color: #7fffd4; }
+    td { color: #fff; }
+    .desc { margin-top: 20px; color: #aaa; }
+    .error { color: #ff8080; }
+  </style>
+</head>
+<body>
+  <h1>Ghost.xyz Script</h1>
+  <div class="version" id="version">Latest Version: <b>Loading...</b></div>
+  <div class="desc">Check this page for the latest script version and valid keys.</div>
+  <h2>Key System</h2>
+  <table id="keyTable">
+    <tr>
+      <th>Key</th>
+      <th>Expires</th>
+      <th>HWID</th>
+      <th>Description</th>
+    </tr>
+  </table>
+  <script>
+    // Version fetch
+    fetch('https://raw.githubusercontent.com/hagi122332445543/lateston1/main/version.txt')
+      .then(response => response.text())
+      .then(version => {
+        document.getElementById('version').innerHTML = 'Latest Version: <b>v' + version.trim() + '</b>';
+      })
+      .catch(() => {
+        document.getElementById('version').innerHTML = '<span class="error">Could not load version info.</span>';
+      });
+
+    // Keys fetch
+    fetch('https://raw.githubusercontent.com/hagi122332445543/lateston1/main/keys.json')
+      .then(response => response.json())
+      .then(keys => {
+        const table = document.getElementById('keyTable');
+        keys.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `<td>${row.key}</td><td>${row.expires}</td><td>${row.hwid}</td><td>${row.desc || ''}</td>`;
+          table.appendChild(tr);
+        });
+      })
+      .catch(() => {
+        const table = document.getElementById('keyTable');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td colspan="4" class="error">Could not load key list.</td>`;
+        table.appendChild(tr);
+      });
+  </script>
+</body>
+</html>
