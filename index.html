@@ -29,7 +29,7 @@
   </table>
   <script>
     // Version fetch
-    fetch('https://github.com/mailforbrawlstars1919-code/Web/blob/main/version.txt')
+    fetch('https://raw.githubusercontent.com/mailforbrawlstars1919-code/Web/main/version.txt')
       .then(response => response.text())
       .then(version => {
         document.getElementById('version').innerHTML = 'Latest Version: <b>v' + version.trim() + '</b>';
@@ -39,7 +39,7 @@
       });
 
     // Keys fetch
-    fetch('https://github.com/mailforbrawlstars1919-code/Web/blob/main/keys.json')
+    fetch('https://raw.githubusercontent.com/mailforbrawlstars1919-code/Web/main/keys.json')
       .then(response => response.json())
       .then(keys => {
         const table = document.getElementById('keyTable');
